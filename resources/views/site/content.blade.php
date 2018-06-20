@@ -34,16 +34,14 @@
                                 {!! $page->text !!}
                                 <div class="social-link">
                                     <ul>
-                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                        @foreach($socials as $item)
+                                            <li><a href="{{ $item['social_link'] }}"><i class="{{ $item['icon'] }}"
+                                                                                        aria-hidden="true"></i></a></li>
+                                        @endforeach
                                     </ul>
                                 </div><!-- .social-link -->
                                 <div class="about-actions">
-                                    <button class="m-btn lets-talk">contact me</button>
-                                    <button class="m-btn">download cv</button>
+                                    <button class="m-btn lets-talk">Контакты</button>
                                 </div>
                             </div><!-- .personal-info -->
                         </div><!-- .col-xs-12 col-sm-5 -->
@@ -58,58 +56,38 @@
 @endif
 
 
+@if (isset($services) && is_object($services))
+    <!-- ========== Services ========== -->
+    <section id="services" class="section grey-bg">
+        <div class="container">
+            <div class="section-title">
+                <h2><span>Мои</span> услуги</h2>
+            </div><!-- .section-title -->
 
-<!-- ========== Services ========== -->
-<section id="services" class="section grey-bg">
-    <div class="container">
-        <div class="section-title">
-            <h2><span>My</span> Services</h2>
-        </div><!-- .section-title -->
 
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="service-box">
-            <span class="sb-icon">
-              <i class="fa fa-paint-brush fa-2x" aria-hidden="true"></i>
-            </span>
-                    <h4>WEB DESIGN</h4>
-                    <div class="sb-desc">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sit amet erat
-                            malesuada interdum. Aenean sodales dui quis leo fermentum scelerisque.</p>
-                    </div><!-- .sb-desc -->
-                </div><!-- .service-box -->
-            </div><!-- .col-sm-4 -->
+            <div class="row">
+                @foreach($services as $service)
+                    <div class="col-sm-4">
+                        <div class="service-box">
+                    <span class="sb-icon">
+                      <i class="{{ $service->icon }} fa-2x" aria-hidden="true"></i>
+                    </span>
+                            <h4>{{ $service->name }}</h4>
+                            <div class="sb-desc">
+                                <p>{{ $service->text }}</p>
+                            </div><!-- .sb-desc -->
+                        </div><!-- .service-box -->
+                    </div><!-- .col-sm-4 -->
+                @endforeach
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </section>
+    <!-- ========== End Of Services ========== -->
 
-            <div class="col-sm-4">
-                <div class="service-box">
-            <span class="sb-icon">
-              <i class="fa fa-mobile fa-2x" aria-hidden="true"></i>
-            </span>
-                    <h4>MOBILE APPS</h4>
-                    <div class="sb-desc">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sit amet erat
-                            malesuada interdum. Aenean sodales dui quis leo fermentum scelerisque.</p>
-                    </div><!-- .sb-desc -->
-                </div><!-- .service-box -->
-            </div><!-- .col-sm-4 -->
+@endif
 
-            <div class="col-sm-4">
-                <div class="service-box">
-            <span class="sb-icon">
-              <i class="fa fa-code fa-2x" aria-hidden="true"></i>
-            </span>
-                    <h4>WEB DEVELOPMENT</h4>
-                    <div class="sb-desc">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tincidunt sit amet erat
-                            malesuada interdum. Aenean sodales dui quis leo fermentum scelerisque.</p>
-                    </div><!-- .sb-desc -->
-                </div><!-- .service-box -->
-            </div><!-- .col-sm-4 -->
 
-        </div><!-- .row -->
-    </div><!-- .container -->
-</section>
-<!-- ========== End Of Services ========== -->
+
 
 <!-- ========== Resume  ========== -->
 <section id="resume" class="section">
